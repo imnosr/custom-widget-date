@@ -14,9 +14,15 @@
 import * as webpack from "webpack";
 import common from "./webpack.common";
 import { merge } from "webpack-merge";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 
 const config: webpack.Configuration = merge(common, {
   mode: "production",
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [{ from: "resources", to: "." }],
+    }),
+  ],
 });
 
 export default config;
